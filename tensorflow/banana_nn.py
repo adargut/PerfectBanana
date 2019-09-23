@@ -30,7 +30,7 @@ parser.add_argument("-d", "--dataset", required=True,
                     help="path for input dataset")
 parser.add_argument("-m", "--model", required=True,
                     help="path to output trained model")
-parser.add_argument("-l", "--label-bin", required=True,
+parser.add_argument("-l", "--label", required=True,
                     help="path to output label binarizer")
 parser.add_argument("-p", "--plot", required=True,
                     help="path to output plotted data")
@@ -112,7 +112,6 @@ plt.savefig(args["plot"])
 # save model & label binarizer
 print("[INFO] saving model...")
 model.save(args["model"])
-print("args for label:", args["label-bin"])
-file = open(args["label-bin"], "wb")
-file.write(pickle.dump(lb))
+file = open(args["label"], "wb")
+file.write(pickle.dumps(lb))
 file.close()

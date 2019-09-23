@@ -12,9 +12,9 @@ parser.add_argument("-m", "--model", required=True,
                     help="path to trained Keras model")
 parser.add_argument("-l", "--label-bin", required=True,
                     help="path to label binarizer")
-parser.add_argument("-w", "--width", type=int, default=28,
+parser.add_argument("-w", "--width", type=int, default=32,
                     help="target spatial dimension width")
-parser.add_argument("-e", "--height", type=int, default=28,
+parser.add_argument("-he", "--height", type=int, default=32,
                     help="target spatial dimension height")
 parser.add_argument("-f", "--flatten", type=int, default=-1,
                     help="whether or not we should flatten the image")
@@ -39,8 +39,7 @@ else:
 # load model and label binarizer
 print("[INFO] loading model and binarizer...")
 model = load_model(args["model"])
-file = open(args["label_bin"], "rb")
-lb = pickle.loads(file.read())
+lb = pickle.loads(open(args["label_bin"], "rb").read())
 
 # make a predict for image
 prediction = model.predict(image)

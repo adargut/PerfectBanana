@@ -1,5 +1,6 @@
 # set the matplotlib backend so figures can be saved in the background
 import matplotlib
+from tensorflow import keras
 
 matplotlib.use("Agg")
 
@@ -56,6 +57,8 @@ for imagePath in tqdm(imagePaths):
     label = imagePath.split("\\")[1]
     labels.append(label)
 
+random.shuffle(data)
+print("[INFO] received dataset consisting of", len(data), "banana images...")
 # scale pixels in range [0, 1] and convert to NumPy array
 data = np.array(data, dtype="float") / 255.0
 labels = np.array(labels)
@@ -69,22 +72,21 @@ trainY = lb.fit_transform(trainY)
 testY = lb.transform(testY)
 
 # set up model architecture
-model = Sequential()
-# input layer and first hidden layer, note input shape is tensor of dimensions 32x32x3 = 3072
-model.add(Dense(1024, input_shape=(3072,), activation="sigmoid"))
-# consecutive hidden layer and output layer, consisting of #labels nodes
-model.add(Dense(512, activation="sigmoid"))
-print("[INFO] output layer has", len(lb.classes_), "nodes...")
-model.add(Dense(len(lb.classes_), activation="softmax"))
+model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(28, 28)),
+    keras.layers.Dense(128, activation=tf.nn.sigmoid),
+    # Probabilities for pieces of clothings to be something
+    keras.layers.Dense(10, activation=tf.nn.softmax)
+])
 
 # initialize learning rate and #epochs for training
 lr = 0.01
-epochs = 15
+epochs = 100
 opt = SGD(lr=lr)
 
 # compile model using stochastic gradient descent optimizer and categorical crossentropy
 print("[INFO] training neural network...")
-model.compile(optimizer=opt, loss="categorical_crossentropy", metrics=["accuracy"])
+model.compile(optimizer='adam', loss="categorical_crossentropy", metrics=["accuracy"])
 
 # train model in batches of 32
 Hist = model.fit(trainX, trainY, validation_data=(testX, testY), epochs=epochs, batch_size=32)

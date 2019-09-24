@@ -6,9 +6,11 @@
 
 > built using TensorFlow in Python 3.7 and Android Studio in Java.
 
-**In order to run banana_nn.py, pop this into your terminal:**
-python banana_nn.py -d bananas -m output/nn.model -l output/nn_lb.pickle -p output/nn_plot.png
-
-**In order to run banana_predictor.py, pop this into your terminal:**
-python banana_predictor.py --image test_images/ripe.jpg --model output/nn.model --label-bin output/nn_lb.pickle --width 32 --height 32 --flatten 1
-
+**In order to run banana_nn.py, pop this:**
+```shell
+$ python banana_nn.py -d bananas -m output/nn.model -l output/nn_lb.pickle -p output/nn_plot.png
+```
+**In order to run banana_predictor.py, pop this:**
+```shell
+$ python banana_predictor.py -i test_images/ripe.jpg -m output/nn.model -l output/nn_lb.pickle -w 32 -he 32 -f 1
+```

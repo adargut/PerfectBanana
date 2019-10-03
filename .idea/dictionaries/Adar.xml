@@ -3,6 +3,7 @@
     <words>
       <w>binarizer</w>
       <w>keras</w>
+      <w>softmax</w>
     </words>
   </dictionary>
 </component>

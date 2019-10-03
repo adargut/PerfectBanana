@@ -14,7 +14,7 @@ $ python banana_nn.py -d bananas -m output/nn.model -l output/nn_lb.pickle -p ou
 ```shell
 $ python banana_predictor.py -i test_images/ripe.jpg -m output/nn.model -l output/nn_lb.pickle -w 32 -he 32 -f 1
 ```
-**In order to run train_vggnet.py, pop this:**
+**In order to run banana_cnn.py, pop this:**
 ```shell
-$ python train_vggnet.py -d bananas -m output/vggnet.model -l output/vggnet_lb.pickle -p output/vggnet_plot.png
+$ python banana_cnn.py -d bananas -m output/vggnet.model -l output/vggnet_lb.pickle -p output/vggnet_plot.png
 ```

@@ -12,7 +12,7 @@ $ python banana_nn.py -d bananas -m output/nn.model -l output/nn_lb.pickle -p ou
 ```
 **In order to run banana_predictor.py, pop this:**
 ```shell
-$ python banana_predictor.py -i test_images/ripe.jpg -m output/nn.model -l output/nn_lb.pickle -w 32 -he 32 -f 1
+$ python banana_predictor.py -i test_images/ripe.jpg -m output/vggnet.model -l output/vggnet_lb.pickle -w 64 -he 64
 ```
 **In order to run banana_cnn.py, pop this:**
 ```shell

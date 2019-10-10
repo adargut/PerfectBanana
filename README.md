@@ -6,15 +6,11 @@
 
 > built using TensorFlow in Python 3.7 and Android Studio in Java.
 
-**In order to run banana_nn.py, pop this:**
+**In order to run predict_ripeness.py, pop this:**
 ```shell
-$ python banana_nn.py -d bananas -m output/nn.model -l output/nn_lb.pickle -p output/nn_plot.png
+$ python predict_ripeness.py -i data/test_images/x.jpg -m output/vggnet.model -l output/vggnet_lb.pickle -w 64 -he 64
 ```
-**In order to run banana_predictor.py, pop this:**
+**In order to run build_conv_nn.py, pop this:**
 ```shell
-$ python banana_predictor.py -i test_images/ripe.jpg -m output/vggnet.model -l output/vggnet_lb.pickle -w 64 -he 64
-```
-**In order to run banana_cnn.py, pop this:**
-```shell
-$ python banana_cnn.py -d bananas -m output/vggnet.model -l output/vggnet_lb.pickle -p output/vggnet_plot.png
+$ python build_conv_nn.py -d data -m output/vggnet.model -l output/vggnet_lb.pickle -p output/vggnet_plot.png
 ```

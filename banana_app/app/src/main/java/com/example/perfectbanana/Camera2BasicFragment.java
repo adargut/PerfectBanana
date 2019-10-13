@@ -57,7 +57,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.android.tflitecamerademo.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -659,7 +658,16 @@ public class Camera2BasicFragment extends Fragment
     /** Classifies a frame from the preview stream. */
     private void classifyFrame() {
         if (classifier == null || getActivity() == null || cameraDevice == null) {
-            showToast("Uninitialized Classifier or invalid context.");
+            if (classifier == null) {
+                showToast("Classifier error.");
+            }
+            else if (getActivity() == null) {
+                showToast("Activity error.");
+            }
+            else {
+                showToast("Camera device error.");
+            }
+//            showToast("Uninitialized Classifier or invalid context.");
             return;
         }
         Bitmap bitmap =

@@ -43,7 +43,7 @@ public class ImageClassifier {
     private static final String TAG = "PerfectBanana";
 
     /** Paths for labels and model */
-    private static String modelPath = "graph.tflite";
+    private static String modelPath = "converted_model.tflite";
     private static String labelPath = "labels.txt";
 
     /** Show probabilities for 3 results */
